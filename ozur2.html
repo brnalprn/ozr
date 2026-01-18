@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resmi Özür Beyannamesi</title>
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --accent: #c0392b;
+            --gold: #d4af37;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            background-color: #f4f1ea;
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        #app-container {
+            background: #fff;
+            padding: 40px;
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 10px;
+        }
+
+        .input-group {
+            margin: 20px 0;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: var(--gold);
+            color: black;
+        }
+
+        #letter-area {
+            display: none;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        .seal {
+            width: 80px;
+            height: 80px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+            transform: rotate(-15deg);
+        }
+
+        #cat-party {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cat {
+            font-size: 50px;
+            animation: dance 1s infinite alternate;
+        }
+
+        @keyframes dance {
+            from {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            to {
+                transform: translateY(-30px) rotate(20deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="app-container">
+        <div id="step-1">
+            <h1>T.C. ÖZÜR BAŞKANLIĞI</h1>
+            <p><i>Resmi Sorgulama Ekranı</i></p>
+            <hr>
+            <div class="input-group">
+                <label>Adınız Soyadınız:</label>
+                <input type="text" id="name-check" placeholder="Kimliğinizi kanıtlayın...">
+            </div>
+            <div class="input-group">
+                <label>İşlenen Kusur / Hata Nedir?</label>
+                <textarea id="fault-input" placeholder="Örn: Geç cevap verme, patavatsızlık..."></textarea>
+            </div>
+            <button onclick="verifyIdentity()">KİMLİK DOĞRULA VE DEVAM ET</button>
+        </div>
+
+        <div id="letter-area">
+            <p style="text-align: right;">Tarih: <span id="current-date"></span></p>
+            <p><b>Sayın Ayşe Sevde,</b></p>
+            <p>Makamımıza sunulan şikayet dilekçesi ve yapılan teknik incelemeler sonucunda;</p>
+            <p><strong>Alperen Baran</strong> tarafından gerçekleştirilen <u id="display-fault"></u> eyleminin tamamen
+                sistemsel bir hata olduğu, şahsın bu konuda derin bir pişmanlık duyduğu resmi kayıtlara geçmiştir.</p>
+            <p>Söz konusu hatanın telafisi için Alperen Baran'ın tüm sosyal haklarının askıya alınmasına ve tarafınızdan
+                affedilene kadar "Ayşe Sevde Hanımla Konuşma Hakkına Erişimi Bulunan Kutsanmış İnsan JKOJLJGHULIHG"
+                statüsünden düşürülmesine karar verilmiştir.</p>
+            <p>Gereğinin yapılmasını ve bu resmi özrün kabulünü arz ederim.</p>
+
+            <div style="text-align: right; margin-top: 30px;">
+                <p>Saygılarımla,<br><strong>Alperen Baran</strong></p>
+                <div class="seal">MÜHÜR</div>
+            </div>
+
+            <div style="display: flex; gap: 10px; margin-top: 20px;">
+                <button style="background: green; flex: 1;" onclick="startParty()">AFFETTİM</button>
+                <button style="background: grey; flex: 1;"
+                    onclick="alert('Bu seçenek teknik bir arıza nedeniyle devre dışıdır. Lütfen affetmeyi deneyin.')">AFFETMEDİM</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="cat-party">
+        <h1>AFFEDİLDİK! 🥳</h1>
+        <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+            <div class="cat"></div>
+        </div>
+        <button onclick="location.reload()">Başa Dön</button>
+    </div>
+
+    <script>
+        function verifyIdentity() {
+            const name = document.getElementById('name-check').value.trim().toLowerCase();
+            const fault = document.getElementById('fault-input').value.trim();
+
+            if (name.includes("ayşe") || name.includes("sevde")) {
+                if (fault === "") {
+                    alert("Lütfen işlenen hatayı belirtiniz. Devlet dairesindeyiz, prosedür önemli.");
+                    return;
+                }
+
+                document.getElementById('step-1').style.display = 'none';
+                document.getElementById('letter-area').style.display = 'block';
+                document.getElementById('display-fault').innerText = fault;
+                document.getElementById('current-date').innerText = new Date().toLocaleDateString('tr-TR');
+            } else {
+                alert("Hatalı Kimlik! Bu sayfa yalnızca Ayşe Sevde'ye özeldir.");
+            }
+        }
+
+        function startParty() {
+            document.getElementById('cat-party').style.display = 'flex';
+            // Rastgele kedi yerleştirme
+            for (let i = 0; i < 20; i++) {
+                let cat = document.createElement('div');
+                cat.className = 'cat';
+                cat.innerHTML = '🐱';
+                cat.style.position = 'absolute';
+                cat.style.left = Math.random() * 90 + 'vw';
+                cat.style.top = Math.random() * 90 + 'vh';
+                cat.style.animationDelay = Math.random() + 's';
+                document.getElementById('cat-party').appendChild(cat);
+            }
+        }
+    </script>
+
+</body>
+
+</html>
